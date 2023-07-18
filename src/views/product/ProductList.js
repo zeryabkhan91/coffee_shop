@@ -85,6 +85,7 @@ function Product() {
     { label: "Tax (%)", value: "tax_rate" },
     { label: "Discount", value: "discount" },
     { label: "Discount Type", value: "discount_type" },
+    { label: "Max Limit($)", value: "discount_max_amount" },
   ];
 
   return (
