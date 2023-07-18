@@ -46,6 +46,7 @@ const OrderList = ({ orders }) => {
                           <Th>Product Name</Th>
                           <Th>Quantity</Th>
                           <Th>Price</Th>
+                          <Th>Tax($)</Th>
                           <Th>Discount</Th>
                           <Th>Discounted Price</Th>
                         </Tr>
@@ -56,6 +57,7 @@ const OrderList = ({ orders }) => {
                             <Td>{item.productName}</Td>
                             <Td>{item.quantity}</Td>
                             <Td>{item.price}</Td>
+                            <Td>{item.tax}</Td>
                             <Td>{item.discount}</Td>
                             <Td>{item.discountedPrice}</Td>
                           </Tr>

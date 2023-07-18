@@ -132,17 +132,17 @@ const CreateDeal = () => {
           <FormLabel>Addon</FormLabel>
           <Select
             value={deal.item_discount_id}
-            onChange={(e) =>{
+            onChange={(e) => {
               const selectedAddon = availableItems.find(
                 (item) => item._id === e.target.value
-              ); 
+              );
 
               setDeal({
                 ...deal,
                 item_discount_id: e.target.value,
                 price: selectedAddon.price,
-              })}
-            }
+              });
+            }}
             required
           >
             <option value="">Select an addon</option>
@@ -169,27 +169,29 @@ const CreateDeal = () => {
           <Select
             value={deal.discount_type}
             onChange={(e) =>
-              setDeal({ ...deal, discount_type: e.target.value })
+              setDeal({ ...deal, discount_type: e.target.value, discount_max_amount: 0 })
             }
           >
             <option value="percentage">Percentage</option>
             <option value="amount">Amount</option>
           </Select>
         </FormControl>
-        <FormControl mt={4}>
-          <FormLabel>Maximum Discount Amount</FormLabel>
-          <Input
-            type="number"
-            value={deal.discount_max_amount}
-            onChange={(e) =>
-              setDeal({ ...deal, discount_max_amount: e.target.value })
-            }
-            inputMode="numeric"
-            pattern="[0-9]*"
-            required
-            max={deal.discount_type === "percentage" ? 100 : deal.price}
-          />
-        </FormControl>
+        {deal.discount_type === "percentage" && (
+          <FormControl mt={4}>
+            <FormLabel>Maximum Discount Amount</FormLabel>
+            <Input
+              type="number"
+              value={deal.discount_max_amount}
+              onChange={(e) =>
+                setDeal({ ...deal, discount_max_amount: e.target.value })
+              }
+              inputMode="numeric"
+              pattern="[0-9]*"
+              required
+              max={deal.discount_type === "percentage" ? 100 : deal.price}
+            />
+          </FormControl>
+        )}
         <Button mt={4} colorScheme="blue" type="submit">
           Add Deal
         </Button>

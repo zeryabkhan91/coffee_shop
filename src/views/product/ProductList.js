@@ -82,8 +82,9 @@ function Product() {
     { label: "ID", value: "_id" },
     { label: "Name", value: "name" },
     { label: "Price", value: "price" },
-    { label: "Discount Type", value: "discount_type" },
+    { label: "Tax (%)", value: "tax_rate" },
     { label: "Discount", value: "discount" },
+    { label: "Discount Type", value: "discount_type" },
   ];
 
   return (

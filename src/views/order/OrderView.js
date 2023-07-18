@@ -21,6 +21,7 @@ function Order() {
         fetchOrders();
       }
     });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const fetchOrders = async () => {

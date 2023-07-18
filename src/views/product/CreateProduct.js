@@ -18,6 +18,7 @@ const CreateProduct = () => {
     discount_type: "percentage",
     discount: 0,
     discount_max_amount: 0,
+    tax_rate: 0,
   });
   const toast = useToast();
   const navigate = useNavigate();
@@ -131,6 +132,7 @@ const CreateProduct = () => {
             inputMode="numeric"
             pattern="[0-9]*"
             required
+            min={1}
           />
         </FormControl>
         <FormControl mt={4}>
@@ -138,7 +140,7 @@ const CreateProduct = () => {
           <Select
             value={product.discount_type}
             onChange={(e) =>
-              setProduct({ ...product, discount_type: e.target.value })
+              setProduct({ ...product, discount_type: e.target.value, discount_max_amount: 0 })
             }
           >
             <option value="percentage">Percentage</option>
@@ -156,6 +158,34 @@ const CreateProduct = () => {
             inputMode="numeric"
             pattern="[0-9]*"
             max={product.discount_type === "percentage" ? 100 : product.price}
+          />
+        </FormControl>
+        {product.discount_type === 'percentage' && <FormControl mt={4}>
+          <FormLabel>Discount Max Amount</FormLabel>
+          <Input
+            type="number"
+            value={product.discount_max_amount}
+            onChange={(e) =>
+              setProduct({ ...product, discount_max_amount: e.target.value })
+            }
+            inputMode="numeric"
+            pattern="[0-9]*"
+            min={0}
+            max={100}
+          />
+        </FormControl>}
+        <FormControl mt={4}>
+          <FormLabel>Tax Rate (%)</FormLabel>
+          <Input
+            type="number"
+            value={product.tax_rate}
+            onChange={(e) =>
+              setProduct({ ...product, tax_rate: e.target.value })
+            }
+            inputMode="numeric"
+            pattern="[0-9]*"
+            min={0}
+            max={100}
           />
         </FormControl>
         <Button mt={4} colorScheme="blue" type="submit">

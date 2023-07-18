@@ -8,6 +8,7 @@ export function useSocket() {
 
   useEffect(() => {
     localStorage.setItem('userId', uniqueId);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   function newUser() {
